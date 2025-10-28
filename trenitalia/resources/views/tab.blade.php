@@ -2,63 +2,77 @@
 
 @section('tab')
 
-    <div class="bg-danger p-4">
+    <div class="bg-warning p-4">
 
-        <div class="p-4 bg-dark row text-white">
-            <p class="col-3 mb-0">Treno</p>
-            <p class="col-3 mb-0">Arriva da</p>
+        <div class="p-4 bg-dark row text-warning mb-3">
+            <p class="col-2 mb-0">Treno</p>
+            <p class="col-3 mb-0">In arrivo da</p>
             <p class="col-3 mb-0">Diretto a</p>
-            <p class="col-3 mb-0">Ritardo</p>
+            <p class="col-1 mb-0">Ritardo</p>
         </div>
 
         @foreach ($trains as $train)
 
-            <div class="row p-4 bg-white">
 
-                @if ($train['is_canceled'] == 0)
+            @if ($train['is_canceled'] == 0)
                 
-                    <div class="col-3 d-flex justify-content-start align-items-center">
+                <div class="row p-4 bg-black">
+                    
+                    <div class="bg-dark rounded text-warning col-2 d-flex justify-content-start align-items-center">
                         <p class="mb-0 me-1">{{$train['train_type']}}</p>
                         <p class="mb-0">{{$train['train_identifier']}}</p>
                     </div>
                     
 
-                    <div class="col-3">
+                    <div class="bg-dark rounded text-warning col-3">
                         <p class="mb-0">{{$train['arriving_from']}}</p>
                         <p class="mb-0">{{$train['departure_time']}}</p>
                     </div>
 
-                    <div class="col-3">
+                    <div class="bg-dark rounded text-warning col-3">
                         <p class="mb-0">{{$train['going_to']}}</p>
                         <p class="mb-0">{{$train['arrival_time']}}</p>
                     </div>
-                    
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <p class="mx-auto mb-0">{{$train['minutes_of_delay']}}</p>
+                        
+                    <div class="bg-dark rounded text-warning col-1 d-flex justify-content-start align-items-center">
+                            
+                        @if ($train['has_delay'] === 1)
+                            <p class="mb-0">{{$train['minutes_of_delay']}}</p>
+                        @elseif($train['has_delay'] === 0)
+                            <p class="mb-0">0</p>
+                        @endif
+    
                     </div>
+                    
+                </div>
                 
-                @elseif ($train['is_canceled'] == 1)
+            @elseif ($train['is_canceled'] == 1)
 
-                    <div class="col-3 d-flex justify-content-start align-items-center">
-                        <p class="mb-0 me-1 text-danger">{{$train['train_type']}}</p>
-                        <p class="mb-0 text-danger">{{$train['train_identifier']}}</p>
+                <div class="row p-4 bg-black">
+
+                    <div class="bg-dark rounded col-2 text-danger d-flex justify-content-start align-items-center">
+                        <p class="mb-0 me-1">{{$train['train_type']}}</p>
+                        <p class="mb-0">{{$train['train_identifier']}}</p>
                     </div>
 
-                    <div class="col-3">
-                        <p class="mb-0 text-danger">{{$train['arriving_from']}}</p>
-                        <p class="mb-0 text-danger">{{$train['departure_time']}}</p>
+                    <div class="bg-dark rounded text-danger col-3">
+                        <p class="mb-0">{{$train['arriving_from']}}</p>
+                        <p class="mb-0">{{$train['departure_time']}}</p>
                     </div>
 
-                    <div class="col-3">
-                        <p class="mb-0 text-danger">{{$train['going_to']}}</p>
-                        <p class="mb-0 text-danger">{{$train['arrival_time']}}</p>
+                    <div class="bg-dark rounded text-danger col-3">
+                        <p class="mb-0">{{$train['going_to']}}</p>
+                        <p class="mb-0">{{$train['arrival_time']}}</p>
                     </div>
-                    
-                    <p class="mx-auto mb-0 col-3"></p>
 
-                @endif    
+                    <div class="bg-dark rounded text-danger col-1 d-flex justify-content-start align-items-center">
+                        <p class="mb-0">X</p>
+                    </div>
 
-            </div>
+                </div>
+                
+            @endif    
+
         
         @endforeach
     
