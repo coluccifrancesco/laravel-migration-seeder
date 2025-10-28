@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\TrainsTabController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('tab');
-});
+Route::get('/', [TrainsTabController::class, 'index']);
