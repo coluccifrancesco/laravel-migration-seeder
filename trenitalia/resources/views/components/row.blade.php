@@ -7,7 +7,6 @@
         </div>
     </div>
 
-
     <div class="col-4">
         <div class="{{$central_sections_classes}}">
             <p class="mb-0">{{$arriving_from}}</p>

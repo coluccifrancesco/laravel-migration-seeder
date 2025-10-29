@@ -23,8 +23,8 @@
                 @endif
 
                 {{-- Classi per i vari riquadri del tabellone --}}
-                <x-slot:side_sections_classes>h-100 p-3 bg-dark rounded d-flex justify-content-start align-items-center</x-slot:side_sections_classes>
-                <x-slot:central_sections_classes>bg-dark rounded p-3 d-flex justify-content-between align-items-start flex-column</x-slot:central_sections_classes>
+                <x-slot:side_sections_classes>h-100 p-3 bg-dark rounded d-flex justify-content-center align-items-center</x-slot:side_sections_classes>
+                <x-slot:central_sections_classes>h-100 bg-dark rounded p-3 d-flex justify-content-between align-items-start flex-column</x-slot:central_sections_classes>
 
                 {{-- Dati che popolano ogni riquadro --}}
                 <x-slot:type>{{$train['train_type']}}</x-slot:type>
